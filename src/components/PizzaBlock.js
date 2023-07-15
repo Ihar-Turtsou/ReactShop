@@ -1,36 +1,42 @@
 import React from "react";
 
-export function PizzBlock({ title, price }) {
+export function PizzaBlock({ title, price, imageUrl, types, sizes }) {
 
-  const [pizzaCount, setPizzaCount] = React.useState(0)
+  const pizzaTypeName = ["тонкое", "традиционное"]
+
+  // const [pizzaCount, setPizzaCount] = React.useState(0);
+  const [pizzaSize, setPizzaSize]= React.useState(0);
+  const [pizzaType, setPizzaType]= React.useState(0);
+
+  // const onClickAddbutton = () => {
+  //   setPizzaCount(pizzaCount + 1)
+  // }
   
-  const onClickAddbutton = () => {
-   setPizzaCount(pizzaCount + 1)
-  }
-
 
   return (
     <div className="pizza-block">
       <img
         className="pizza-block__image"
-        src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+        src={imageUrl}
         alt="Pizza"
       />
       <h4 className="pizza-block__title">{title}</h4>
       <div className="pizza-block__selector">
         <ul>
-          <li className="active">тонкое</li>
-          <li>традиционное</li>
+          {types.map((value, i) => <li onClick={()=> setPizzaType(i)} className={pizzaType===i ? "active": ""}>{pizzaTypeName[value]}</li>)}
+          {/* <li className="active">тонкое</li>
+          <li>традиционное</li> */}
         </ul>
         <ul>
-          <li className="active">26 см.</li>
+        {sizes.map((value,i)=><li onClick={()=>setPizzaSize(i)} className={pizzaSize===i ? "active" : "" }>{value} см.</li>)}
+          {/* <li className="active">26 см.</li>
           <li>30 см.</li>
-          <li>40 см.</li>
+          <li>40 см.</li> */}
         </ul>
       </div>
       <div className="pizza-block__bottom">
         <div className="pizza-block__price">от {price} ₽</div>
-        <button onClick={onClickAddbutton} className="button button--outline button--add">
+        <button className="button button--outline button--add">
           <svg
             width="12"
             height="12"
@@ -44,7 +50,7 @@ export function PizzBlock({ title, price }) {
             />
           </svg>
           <span>Добавить</span>
-          <i>{pizzaCount}</i>
+          <i>0</i>
         </button>
       </div>
     </div>

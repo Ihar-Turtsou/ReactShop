@@ -4,10 +4,14 @@ import './scss/app.scss'
 import { Header } from "./components/Header";
 import { Categories } from "./components/Categories";
 import { Sort } from "./components/Sort";
-import { PizzBlock } from "./components/PizzaBlock";
+import { PizzaBlock } from "./components/PizzaBlock";
+import pizzaItem from "./assets/pizzas.json"
+
+
 
 
 function App() {
+  // console.log(pizzaItem)
   return (
     <div className="wrapper">
       <Header />
@@ -19,10 +23,18 @@ function App() {
           </div>
           <h2 className="content__title">Все пиццы</h2>
           <div className="content__items">
-            <PizzBlock title="Мексиканская" price={250}/>
+            {pizzaItem.map((obj, i) => <PizzaBlock
+            {...obj}
+              // title={obj.title}
+              // price={obj.price}
+              // image={obj.imageUrl}
+              // types={obj.types}
+              // sizes={obj.sizes}
+               />)}
+            {/* <PizzBlock title="Мексиканская" price={250}/>
             <PizzBlock />
             <PizzBlock />
-            <PizzBlock />
+            <PizzBlock /> */}
           </div>
         </div>
       </div>
