@@ -4,14 +4,9 @@ export function PizzaBlock({ title, price, imageUrl, types, sizes }) {
 
   const pizzaTypeName = ["тонкое", "традиционное"]
 
-  // const [pizzaCount, setPizzaCount] = React.useState(0);
-  const [pizzaSize, setPizzaSize]= React.useState(0);
-  const [pizzaType, setPizzaType]= React.useState(0);
+  const [pizzaSize, setPizzaSize] = React.useState(0);
+  const [pizzaType, setPizzaType] = React.useState(0);
 
-  // const onClickAddbutton = () => {
-  //   setPizzaCount(pizzaCount + 1)
-  // }
-  
 
   return (
     <div className="pizza-block">
@@ -23,15 +18,24 @@ export function PizzaBlock({ title, price, imageUrl, types, sizes }) {
       <h4 className="pizza-block__title">{title}</h4>
       <div className="pizza-block__selector">
         <ul>
-          {types.map((value, i) => <li onClick={()=> setPizzaType(i)} className={pizzaType===i ? "active": ""}>{pizzaTypeName[value]}</li>)}
-          {/* <li className="active">тонкое</li>
-          <li>традиционное</li> */}
+          {types.map((typeId) => (
+          <li
+            key = {typeId}
+            onClick={() => setPizzaType(typeId)}
+            className={pizzaType === typeId ? "active" : ""}>
+            {pizzaTypeName[typeId]}
+            </li>
+            ))}
         </ul>
         <ul>
-        {sizes.map((value,i)=><li onClick={()=>setPizzaSize(i)} className={pizzaSize===i ? "active" : "" }>{value} см.</li>)}
-          {/* <li className="active">26 см.</li>
-          <li>30 см.</li>
-          <li>40 см.</li> */}
+          {sizes.map((size, i) => 
+          <li
+          key = {size} 
+          onClick={() => setPizzaSize(i)} 
+          className={pizzaSize === i ? "active" : ""}>
+          {size} см.
+          </li>
+          )}
         </ul>
       </div>
       <div className="pizza-block__bottom">

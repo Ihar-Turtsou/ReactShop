@@ -14,14 +14,14 @@ export function Categories() {
     'Закрытые',
   ]
 
-  // const chooseCategorie =(index)=>{
-  //   setActivCategory(index)
-  // }
-
     return (
       <div className="categories">
         <ul>
-          {categories.map((value,i)=> <li onClick={()=> setActivCategory(i)} className={activeCategorie === i ? "active" : ''}>{value}</li>)}
+          {categories.map((value,i)=> <li 
+          key = {value}
+          onClick={()=> setActivCategory(i)} 
+          className={activeCategorie === i ? "active" : ''}>
+          {value}</li>)}
         </ul>
       </div>
     );
